@@ -4,13 +4,27 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/drawable/item_selected.xml" value="0.2515" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_detail_kelas_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_detail_kelas_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_instruktur_add.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_instruktur_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_kelas_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_kelas_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_materi_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_materi_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_peserta_add.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_peserta_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/fragment_detail_kelas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/fragment_instruktur.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/fragment_kelas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/fragment_materi.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/fragment_peserta.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_detail_kelas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_instruktor.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_kelas.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_materi.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_peserta.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/nav_header_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/menu/side_menu.xml" value="0.25416666666666665" />
       </map>

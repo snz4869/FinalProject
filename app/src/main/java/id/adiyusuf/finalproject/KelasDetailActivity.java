@@ -3,10 +3,7 @@ package id.adiyusuf.finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -26,35 +23,34 @@ import java.util.HashMap;
 
 import id.adiyusuf.finalproject.databinding.ActivityMainBinding;
 
-public class InstrukturDetailActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText edit_id_ins,edit_nama_ins, edit_email, edit_hp_ins;
-    String id_ins;
-    Button btn_update_ins,btn_delete_ins;
+public class KelasDetailActivity extends AppCompatActivity implements View.OnClickListener {
+
+    EditText edit_id_kls,edit_tgl_mulai, edit_tgl_akhir, edit_id_ins_kls, edit_id_mat_kls;
+    String id_kls;
+    Button btn_update_kls,btn_delete_kls;
     private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_instruktur_detail);
+        setContentView(R.layout.activity_kelas_detail);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setTitle("Detail Data Pegawai");
-
-        edit_id_ins = findViewById(R.id.edit_id_ins);
-        edit_nama_ins = findViewById(R.id.edit_nama_ins);
-        edit_email = findViewById(R.id.edit_email);
-        edit_hp_ins = findViewById(R.id.edit_hp_ins);
-        btn_update_ins = findViewById(R.id.btn_update_ins);
-        btn_delete_ins = findViewById(R.id.btn_delete_ins);
+        edit_id_kls = findViewById(R.id.edit_id_kls);
+        edit_tgl_mulai = findViewById(R.id.edit_tgl_mulai);
+        edit_tgl_akhir = findViewById(R.id.edit_tgl_akhir);
+        edit_id_ins_kls = findViewById(R.id.edit_id_ins_kls);
+        edit_id_mat_kls = findViewById(R.id.edit_id_mat_kls);
+        btn_update_kls = findViewById(R.id.btn_update_kls);
+        btn_delete_kls = findViewById(R.id.btn_delete_kls);
 
         Intent receiveIntent = getIntent();
-        id_ins = receiveIntent.getStringExtra(Konfigurasi.INS_ID);
-        edit_id_ins.setText(id_ins);
+        id_kls = receiveIntent.getStringExtra(KonfigurasiKelas.KLS_ID);
+        edit_id_kls.setText(id_kls);
 
         getJSON();
 
-        btn_update_ins.setOnClickListener(this);
-        btn_delete_ins.setOnClickListener(this);
+        btn_update_kls.setOnClickListener(this);
+        btn_delete_kls.setOnClickListener(this);
     }
 
     private void getJSON() {
@@ -65,7 +61,7 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
             @Override
             protected void onPreExecute() { // sebelum proses
                 super.onPreExecute();
-                loading = ProgressDialog.show(InstrukturDetailActivity.this,
+                loading = ProgressDialog.show(KelasDetailActivity.this,
                         "Mengambil Data","Harap Menunggu...",
                         false,false);
             }
@@ -73,7 +69,7 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
             @Override
             protected String doInBackground(Void... voids) { // saat proses
                 HttpHandler handler = new HttpHandler();
-                String result = handler.sendGetResponse(Konfigurasi.URL_GET_DETAIL,id_ins);
+                String result = handler.sendGetResponse(KonfigurasiKelas.URL_GET_DETAIL,id_kls);
                 return result;
             }
 
@@ -88,40 +84,40 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
         getJSON.execute();
     }
 
-    private void displayDetailData(String json) {
+    private void displayDetailData(String message) {
         try {
-            JSONObject jsonObject = new JSONObject(json);
-            JSONArray result = jsonObject.getJSONArray(Konfigurasi.TAG_JSON_ARRAY);
+            JSONObject jsonObject = new JSONObject(message);
+            JSONArray result = jsonObject.getJSONArray(KonfigurasiKelas.TAG_JSON_ARRAY);
             JSONObject object = result.getJSONObject(0);
 
-            String nama_ins = object.getString(Konfigurasi.TAG_JSON_NAMA);
-            String email = object.getString(Konfigurasi.TAG_JSON_EMAIL);
-            String hp_ins = object.getString(Konfigurasi.TAG_JSON_HP);
+            String tgl_mulai = object.getString(KonfigurasiKelas.TAG_JSON_TGL_MULAI);
+            String tgl_akhir = object.getString(KonfigurasiKelas.TAG_JSON_TGL_AKHIR);
+            String id_ins_kls = object.getString(KonfigurasiKelas.TAG_JSON_ID_INS);
+            String id_mat_kls = object.getString(KonfigurasiKelas.TAG_JSON_ID_MAT);
 
-            edit_nama_ins.setText(nama_ins);
-            edit_email.setText(email);
-            edit_hp_ins.setText(hp_ins);
+            edit_tgl_mulai.setText(tgl_mulai);
+            edit_tgl_akhir.setText(tgl_akhir);
+            edit_id_ins_kls.setText(id_ins_kls);
+            edit_id_mat_kls.setText(id_mat_kls);
         } catch (Exception ex){
             ex.printStackTrace();
         }
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         onBackPressed();
         return true;
     }
-
     @Override
     public void onClick(View myButton) {
-        if(myButton == btn_update_ins){
-            updateDataInstruktur();
-        } else if(myButton == btn_delete_ins){
-            confirmDeleteDataInstruktur();
+        if(myButton == btn_update_kls){
+            updateDataKelas();
+        } else if(myButton == btn_delete_kls){
+            confirmDeleteDataKelas();
         }
     }
 
-    private void confirmDeleteDataInstruktur() {
+    private void confirmDeleteDataKelas() {
         //Confirmation altert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete Data");
@@ -132,22 +128,22 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                deleteDataInstruktur();
+                deleteDataKelas();
             }
         });
         AlertDialog dialog = builder.create();
         dialog.show();
     }
 
-    private void deleteDataInstruktur() {
-        class DeleteDataInstruktur extends AsyncTask<Void,Void, String>{
+    private void deleteDataKelas() {
+        class DeleteDataKelas extends AsyncTask<Void,Void, String>{
             ProgressDialog loading;
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
 
-                loading = ProgressDialog.show(InstrukturDetailActivity.this,
+                loading = ProgressDialog.show(KelasDetailActivity.this,
                         "Menghapus Data","Harap Tunggu",
                         false,false);
             }
@@ -155,7 +151,7 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
             @Override
             protected String doInBackground(Void... voids) {
                 HttpHandler handler = new HttpHandler();
-                String result = handler.sendGetResponse(Konfigurasi.URL_DELETE, id_ins);
+                String result = handler.sendGetResponse(KonfigurasiKelas.URL_DELETE, id_kls);
 
                 return result;
             }
@@ -165,30 +161,31 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
                 super.onPostExecute(s);
 
                 loading.dismiss();
-                Toast.makeText(InstrukturDetailActivity.this,"Pesan: " + s,
+                Toast.makeText(KelasDetailActivity.this,"Pesan: " + s,
                         Toast.LENGTH_SHORT).show();
-                Intent myIntent = new Intent(InstrukturDetailActivity.this, MainActivity.class);
-                myIntent.putExtra("keyName", "instruktur");
+                Intent myIntent = new Intent(KelasDetailActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "kelas");
                 startActivity(myIntent);
             }
         }
-        DeleteDataInstruktur deleteDataInstruktur = new DeleteDataInstruktur();
-        deleteDataInstruktur.execute();
+        DeleteDataKelas deleteDataKelas = new DeleteDataKelas();
+        deleteDataKelas.execute();
     }
 
-    private void updateDataInstruktur() {
+    private void updateDataKelas() {
         // variable data pegawai yang akan diubah
-        final String nama_ins = edit_nama_ins.getText().toString().trim();
-        final String email = edit_email.getText().toString().trim();
-        final String hp_ins = edit_hp_ins.getText().toString().trim();
+        final String tgl_mulai = edit_tgl_mulai.getText().toString().trim();
+        final String tgl_akhir = edit_tgl_akhir.getText().toString().trim();
+        final String id_ins_kls = edit_id_ins_kls.getText().toString().trim();
+        final String id_mat_kls = edit_id_mat_kls.getText().toString().trim();
 
-        class UpdateDataInstruktur extends AsyncTask<Void,Void,String>{
+        class UpdateDataKelas extends AsyncTask<Void,Void,String>{
             ProgressDialog loading;
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(InstrukturDetailActivity.this,
+                loading = ProgressDialog.show(KelasDetailActivity.this,
                         "Mengubah Data","Harap Tunggu",
                         false,false);
             }
@@ -196,12 +193,13 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
             @Override
             protected String doInBackground(Void... voids) {
                 HashMap<String,String> params = new HashMap<>();
-                params.put(Konfigurasi.KEY_INS_ID,id_ins);
-                params.put(Konfigurasi.KEY_INS_NAMA,nama_ins);
-                params.put(Konfigurasi.KEY_INS_EMAIL,email);
-                params.put(Konfigurasi.KEY_INS_HP,hp_ins);
+                params.put(KonfigurasiKelas.KEY_KLS_ID,id_kls);
+                params.put(KonfigurasiKelas.KEY_KLS_TGL_MULAI,tgl_mulai);
+                params.put(KonfigurasiKelas.KEY_KLS_TGL_AKHIR,tgl_akhir);
+                params.put(KonfigurasiKelas.KEY_KLS_ID_INS,id_ins_kls);
+                params.put(KonfigurasiKelas.KEY_KLS_ID_MAT,id_mat_kls);
                 HttpHandler handler = new HttpHandler();
-                String result = handler.sendPostRequest(Konfigurasi.URL_UPDATE, params);
+                String result = handler.sendPostRequest(KonfigurasiKelas.URL_UPDATE, params);
 
                 return result;
             }
@@ -213,17 +211,16 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
 
                 Fragment fragment = null;
 
-                Toast.makeText(InstrukturDetailActivity.this,
+                Toast.makeText(KelasDetailActivity.this,
                         "Pesan: " + s, Toast.LENGTH_SHORT).show();
-                Intent myIntent = new Intent(InstrukturDetailActivity.this, MainActivity.class);
-                myIntent.putExtra("keyName", "instruktur");
+                Intent myIntent = new Intent(KelasDetailActivity.this, MainActivity.class);
+                myIntent.putExtra("keyName", "kelas");
                 startActivity(myIntent);
 
             }
         }
 
-        UpdateDataInstruktur updateDataInstruktur = new UpdateDataInstruktur();
-        updateDataInstruktur.execute();
+        UpdateDataKelas updateDataKelas = new UpdateDataKelas();
+        updateDataKelas.execute();
     }
-
 }

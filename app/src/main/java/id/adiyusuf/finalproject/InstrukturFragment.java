@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InstrukturFragment extends Fragment{
+public class InstrukturFragment extends Fragment {
 
     ListView list_view_ins;
     private String JSON_STRING;

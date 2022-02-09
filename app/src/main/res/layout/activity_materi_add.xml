@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".InstrukturAddActivity">
+        tools:context=".MateriAddActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/holo_green_light"
             android:minHeight="?attr/actionBarSize"
-            app:title="Tambah Instruktur"
+            app:title="Tambah Materi"
             app:titleTextColor="@color/white" />
 
         <LinearLayout
@@ -26,28 +26,12 @@
 
 
             <EditText
-                android:id="@+id/add_nama_ins"
+                android:id="@+id/add_nama_mat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Nama Instruktur"
+                android:hint="Nama Materi"
                 android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/add_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress" />
-
-            <EditText
-                android:id="@+id/add_hp_ins"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="No Telp"
-                android:inputType="number" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +40,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btn_add_ins"
+                    android:id="@+id/btn_add_mat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
@@ -64,7 +48,7 @@
                     android:text="Tambah" />
 
                 <Button
-                    android:id="@+id/btn_cancel_ins"
+                    android:id="@+id/btn_cancel_mat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"

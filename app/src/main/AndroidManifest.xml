@@ -13,6 +13,30 @@
         android:theme="@style/Theme.FinalProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".DetailKelasDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailKelasAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KelasDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KelasAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PesertaAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PesertaDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MateriDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MateriAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".InstrukturAddActivity"
             android:exported="false" />
         <activity
