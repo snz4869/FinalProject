@@ -1,6 +1,7 @@
 package id.adiyusuf.finalproject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -22,10 +24,12 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InstrukturFragment extends Fragment  {
+public class InstrukturFragment extends Fragment{
 
     ListView list_view_ins;
     private String JSON_STRING;
+    Button btn_add_ins_frag;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,19 +66,32 @@ public class InstrukturFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-            View view = inflater.inflate(R.layout.fragment_instruktur, container, false);
-            list_view_ins = view.findViewById(R.id.list_view_ins);
+        View view = inflater.inflate(R.layout.fragment_instruktur, container, false);
+        list_view_ins = view.findViewById(R.id.list_view_ins);
+        btn_add_ins_frag = view.findViewById(R.id.btn_add_ins_frag);
 
-            getJSON();
+        getJSON();
 
-//            list_view_ins.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                }
-//            });
+        list_view_ins.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(getActivity(),
+                        InstrukturDetailActivity.class);
+                HashMap<String, String> map = (HashMap) parent.getItemAtPosition(position);
+                String insId = map.get(Konfigurasi.TAG_JSON_ID).toString();
+                myIntent.putExtra(Konfigurasi.INS_ID, insId);
+                startActivity(myIntent);
+            }
+        });
 
-            return view;
+        btn_add_ins_frag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), InstrukturAddActivity.class));
+            }
+        });
+
+        return view;
     }
 
     private void getJSON() {
@@ -124,7 +141,7 @@ public class InstrukturFragment extends Fragment  {
             jsonObject = new JSONObject(JSON_STRING);
             JSONArray result = jsonObject.getJSONArray(Konfigurasi.TAG_JSON_ARRAY);
             Log.d("DATA JSON: ", JSON_STRING);
-            Toast.makeText(getActivity(), "DATA JSON" + JSON_STRING, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "DATA JSON" + JSON_STRING, Toast.LENGTH_SHORT).show();
 
             for (int i = 0; i < result.length(); i++) {
                 JSONObject object = result.getJSONObject(i);
@@ -146,7 +163,7 @@ public class InstrukturFragment extends Fragment  {
                 getActivity(), list,
                 R.layout.list_item_instruktor,
                 new String[]{Konfigurasi.TAG_JSON_ID, Konfigurasi.TAG_JSON_NAMA},
-                new int[]{R.id.txt_id,R.id.txt_name}
+                new int[]{R.id.txt_id, R.id.txt_name}
         );
         list_view_ins.setAdapter(adapter);
     }
