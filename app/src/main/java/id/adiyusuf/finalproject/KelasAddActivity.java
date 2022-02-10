@@ -9,16 +9,27 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import android.app.DatePickerDialog;
 
 import java.util.HashMap;
 
 public class KelasAddActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText add_tgl_mulai, add_tgl_akhir, add_id_ins_kls, add_id_mat_kls;
-    private Button btn_add_kls, btn_cancel_kls;
+    private Button btn_add_kls, btn_cancel_kls,btn_datepick_tgl_mulai,btn_datepick_tgl_akhir;
+    private DatePickerDialog datePickerDialog;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +42,73 @@ public class KelasAddActivity extends AppCompatActivity implements View.OnClickL
         add_id_mat_kls = findViewById(R.id.add_id_mat_kls);
         btn_add_kls = findViewById(R.id.btn_add_kls);
         btn_cancel_kls = findViewById(R.id.btn_cancel_kls);
+        btn_datepick_tgl_mulai = findViewById(R.id.btn_datepicker_tgl_mulai);
+        btn_datepick_tgl_akhir = findViewById(R.id.btn_datepicker_tgl_akhir);
+
+
+        btn_datepick_tgl_mulai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDateDialogeTanggalMulai();
+            }
+        });
+
+        btn_datepick_tgl_akhir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDateDialogeTanggalAkhir();
+            }
+        });
+
 
         btn_cancel_kls.setOnClickListener(this);
         btn_add_kls.setOnClickListener(this);
     }
+
+
+
+    private void showDateDialogeTanggalAkhir() {
+        Calendar newCalendar = Calendar.getInstance();
+
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+
+                //txt_date.setText("Tanggal dipilih : "+dateFormatter.format(newDate.getTime()).toString());
+                add_tgl_akhir.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+
+        datePickerDialog.show();
+    }
+
+    private void showDateDialogeTanggalMulai() {
+        Calendar newCalendar = Calendar.getInstance();
+
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+
+                //txt_date.setText("Tanggal dipilih : "+dateFormatter.format(newDate.getTime()).toString());
+                add_tgl_mulai.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+
+        datePickerDialog.show();
+    }
+
 
     @Override
     public void onClick(View v) {

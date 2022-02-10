@@ -84,21 +84,21 @@ public class MainActivity extends AppCompatActivity {
                 fragmentMenu = new PesertaFragment();
                 binding.drawer.closeDrawer(GravityCompat.START);
                 callFragment(fragmentMenu);
-                binding.navView.setCheckedItem(R.id.nav_materi);
+                binding.navView.setCheckedItem(R.id.nav_peserta);
                 break;
             case "kelas":
                 getSupportActionBar().setTitle("Kelas");
                 fragmentMenu = new KelasFragment();
                 binding.drawer.closeDrawer(GravityCompat.START);
                 callFragment(fragmentMenu);
-                binding.navView.setCheckedItem(R.id.nav_materi);
+                binding.navView.setCheckedItem(R.id.nav_kelas);
                 break;
             case "detail kelas":
                 getSupportActionBar().setTitle("Detail Kelas");
                 fragmentMenu = new DetailKelasFragment();
                 binding.drawer.closeDrawer(GravityCompat.START);
                 callFragment(fragmentMenu);
-                binding.navView.setCheckedItem(R.id.nav_materi);
+                binding.navView.setCheckedItem(R.id.nav_detail_kelas);
                 break;
         }
 

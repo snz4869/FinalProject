@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Instansi"
-                android:inputType="number" />
+                android:inputType="textPersonName" />
 
             <LinearLayout
                 android:layout_width="match_parent"

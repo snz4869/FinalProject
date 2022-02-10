@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -124,7 +125,6 @@ public class KelasFragment extends Fragment {
                 HttpHandler handler = new HttpHandler();
                 String result = handler.sendGetResponse(KonfigurasiKelas.URL_GET_ALL);
 //                System.out.println("Result: " + result);
-
                 return result;
             }
 
@@ -134,8 +134,9 @@ public class KelasFragment extends Fragment {
                 loading.dismiss();
                 JSON_STRING = message;
                 Log.d("DATA JSON: ", JSON_STRING);
-                //Toast.makeText(getActivity(),
-                //        message.toString(), Toast.LENGTH_SHORT).show();
+
+//                Toast.makeText(getActivity(),
+//                        message.toString(), Toast.LENGTH_SHORT).show();
                 //menampilkan data dalam bentuk list view
                 displayAllData();
             }
@@ -152,7 +153,7 @@ public class KelasFragment extends Fragment {
             jsonObject = new JSONObject(JSON_STRING);
             JSONArray result = jsonObject.getJSONArray(KonfigurasiKelas.TAG_JSON_ARRAY);
             Log.d("DATA JSON: ", JSON_STRING);
-            //Toast.makeText(getActivity(), "DATA JSON" + JSON_STRING, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), "DATA JSON" + JSON_STRING, Toast.LENGTH_SHORT).show();
 
             for (int i = 0; i < result.length(); i++) {
                 JSONObject object = result.getJSONObject(i);

@@ -9,8 +9,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -19,6 +22,9 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
 
     private EditText add_id_kls_dtl_kls, add_id_pst_dtl_kls;
     private Button btn_add_dtl_kls, btn_cancel_dtl_kls;
+    private Spinner spinner_nama_pst;
+    private int spinner_value;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +34,36 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
         add_id_pst_dtl_kls = findViewById(R.id.add_id_pst_dtl_kls);
         btn_add_dtl_kls = findViewById(R.id.btn_add_dtl_kls);
         btn_cancel_dtl_kls = findViewById(R.id.btn_cancel_dtl_kls);
+        spinner_nama_pst = findViewById(R.id.spinner_nama_pst);
 
         btn_cancel_dtl_kls.setOnClickListener(this);
         btn_add_dtl_kls.setOnClickListener(this);
+
+        spinnerNamaPeserta();
+    }
+
+    private void spinnerNamaPeserta() {
+        String[] items = new String[]{"satu", "dua", "tiga"};
+        Integer[] values = new Integer[]{1, 2, 3};
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item,items); //selected item will look like a spinner set from XML
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_nama_pst.setAdapter(spinnerArrayAdapter);
+
+        spinner_nama_pst.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                spinner_value = values[ i];
+                Toast.makeText(DetailKelasAddActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
     @Override
     public void onClick(View v) {
@@ -53,7 +86,8 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
         builder.setTitle("Insert Data");
         builder.setMessage("Are you sure want to insert this data? \n" +
                 "\n ID Kelas   : " + kom_id_kls +
-                "\n ID Peserta : " + kom_id_pst);
+                "\n ID Peserta : " + kom_id_pst +
+                "\n ID Spinner : " + spinner_value);
         builder.setIcon(getResources().getDrawable(android.R.drawable.ic_input_add));
         builder.setCancelable(false);
         builder.setNegativeButton("Cancel",null);

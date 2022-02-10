@@ -10,14 +10,14 @@ public class KonfigurasiDetailKelas {
 
     // key and value json yang muncul di browser
     public static final String KEY_DTL_KLS_ID = "id_detail_kls";
-    public static final String KEY_DTL_KLS_ID_KLS = "id_kls_dtl_kls";
-    public static final String KEY_DTL_KLS_ID_PST = "id_pst_dtl_kls";
+    public static final String KEY_DTL_KLS_ID_KLS = "id_kls";
+    public static final String KEY_DTL_KLS_ID_PST = "id_pst";
 
     // flwg json
     public static final String TAG_JSON_ARRAY = "result";
     public static final String TAG_JSON_ID = "id_detail_kls";
-    public static final String TAG_JSON_ID_KLS = "id_kls_dtl_kls";
-    public static final String TAG_JSON_ID_PST = "id_pst_dtl_kls";
+    public static final String TAG_JSON_ID_KLS = "nama_mat";
+    public static final String TAG_JSON_ID_PST = "nama_pst";
 
     //variable ID Pegawai
     public static final String DTL_KLS_ID = "dtl_kls_id";

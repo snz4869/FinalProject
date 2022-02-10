@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -132,6 +133,8 @@ public class DetailKelasFragment extends Fragment {
                 super.onPostExecute(message);
                 loading.dismiss();
                 JSON_STRING = message;
+
+//                Toast.makeText(getActivity(), "JSON: " + message, Toast.LENGTH_SHORT).show();
                 Log.d("DATA JSON: ", JSON_STRING);
 
                 displayAllData();
@@ -149,7 +152,7 @@ public class DetailKelasFragment extends Fragment {
             jsonObject = new JSONObject(JSON_STRING);
             JSONArray result = jsonObject.getJSONArray(KonfigurasiDetailKelas.TAG_JSON_ARRAY);
             Log.d("DATA JSON: ", JSON_STRING);
-            //Toast.makeText(getActivity(), "DATA JSON" + JSON_STRING, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), "DATA JSON" + JSON_STRING, Toast.LENGTH_SHORT).show();
 
             for (int i = 0; i < result.length(); i++) {
                 JSONObject object = result.getJSONObject(i);

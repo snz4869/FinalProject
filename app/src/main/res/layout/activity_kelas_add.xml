@@ -25,19 +25,33 @@
             android:padding="16dp">
 
 
+            <Button
+                android:id="@+id/btn_datepicker_tgl_mulai"
+                android:text="Tanggal Mulai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
             <EditText
                 android:id="@+id/add_tgl_mulai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="false"
                 android:hint="Tanggal Mulai"
                 android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/btn_datepicker_tgl_akhir"
+                android:text="Tanggal Akhir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <EditText
                 android:id="@+id/add_tgl_akhir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="false"
                 android:hint="Tanggal Akhir"
                 android:inputType="textEmailAddress" />
 
