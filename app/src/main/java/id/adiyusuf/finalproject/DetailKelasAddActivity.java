@@ -27,27 +27,109 @@ import java.util.HashMap;
 
 public class DetailKelasAddActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText add_id_kls_dtl_kls, add_id_pst_dtl_kls;
+//    private EditText add_id_kls_dtl_kls, add_id_pst_dtl_kls;
     private Button btn_add_dtl_kls, btn_cancel_dtl_kls;
-    private Spinner spinner_nama_pst;
-    private int spinner_value;
-    private String JSON_STRING;
+    private Spinner spinner_nama_pst,spinner_nama_kelas;
+    private int spinner_value, spinner_value_kelas;
+    private String JSON_STRING, JSON_STRING_KLS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_kelas_add);
 
-        add_id_kls_dtl_kls = findViewById(R.id.add_id_kls_dtl_kls);
-        add_id_pst_dtl_kls = findViewById(R.id.add_id_pst_dtl_kls);
+//        add_id_kls_dtl_kls = findViewById(R.id.add_id_kls_dtl_kls);
+//        add_id_pst_dtl_kls = findViewById(R.id.add_id_pst_dtl_kls);
         btn_add_dtl_kls = findViewById(R.id.btn_add_dtl_kls);
         btn_cancel_dtl_kls = findViewById(R.id.btn_cancel_dtl_kls);
         spinner_nama_pst = findViewById(R.id.spinner_nama_pst);
+        spinner_nama_kelas = findViewById(R.id.spinner_nama_kelas);
 
         btn_cancel_dtl_kls.setOnClickListener(this);
         btn_add_dtl_kls.setOnClickListener(this);
 
+        getDataKelas();
         getDataPesetra();
+
+    }
+
+    private void getDataKelas() {
+        //bantuan dari class AsyncTask
+        class GetJSON extends AsyncTask<Void, Void, String> {
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(DetailKelasAddActivity.this,
+                        "Mengambil Data", "Harap Tunggu...",
+                        false, false);
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                HttpHandler handler = new HttpHandler();
+                String result = handler.sendGetResponse(KonfigurasiKelas.URL_GET_ALL);
+
+                return result;
+            }
+
+            @Override
+            protected void onPostExecute(String message) {
+                super.onPostExecute(message);
+                loading.dismiss();
+                JSON_STRING_KLS = message;
+                Log.d("DATA JSON: ", JSON_STRING_KLS);
+
+                spinnerKelas();
+            }
+        }
+        GetJSON getJSON = new GetJSON();
+        getJSON.execute();
+    }
+
+    private void spinnerKelas() {
+
+        JSONObject jsonObject = null;
+        ArrayList<String> listIdKls = new ArrayList<>();
+        ArrayList<String> listNamaKls = new ArrayList<>();
+
+        try {
+            jsonObject = new JSONObject(JSON_STRING_KLS);
+            JSONArray result = jsonObject.getJSONArray(KonfigurasiKelas.TAG_JSON_ARRAY);
+            Log.d("DATA JSON: ", JSON_STRING_KLS);
+            Toast.makeText(DetailKelasAddActivity.this, "DATA JSON Result: " + result, Toast.LENGTH_SHORT).show();
+
+            for (int i = 0; i < result.length(); i++) {
+                JSONObject object = result.getJSONObject(i);
+                String id_kls = object.getString(KonfigurasiKelas.TAG_JSON_ID);
+                String nama_kls = object.getString(KonfigurasiKelas.TAG_JSON_ID_MAT);
+                listIdKls.add(id_kls);
+                listNamaKls.add(nama_kls);
+            }
+            Toast.makeText(this, "test: "+listNamaKls.toString(), Toast.LENGTH_SHORT).show();
+
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
+                    (this, android.R.layout.simple_spinner_item,listNamaKls); //selected item will look like a spinner set from XML
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner_nama_kelas.setAdapter(spinnerArrayAdapter);
+
+            spinner_nama_kelas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    spinner_value_kelas = Integer.parseInt(listIdKls.get(i));
+                    Toast.makeText(DetailKelasAddActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void getDataPesetra() {
@@ -141,16 +223,15 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
 
     private void confirmAddDataDetailKelas() {
         //get value text field
-        final String kom_id_kls = add_id_kls_dtl_kls.getText().toString().trim();
-        final String kom_id_pst = add_id_pst_dtl_kls.getText().toString().trim();
+//        final String kom_id_kls = add_id_kls_dtl_kls.getText().toString().trim();
+//        final String kom_id_pst = add_id_pst_dtl_kls.getText().toString().trim();
 
         //Confirmation altert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Insert Data");
         builder.setMessage("Are you sure want to insert this data? \n" +
-                "\n ID Kelas   : " + kom_id_kls +
-                "\n ID Peserta : " + kom_id_pst +
-                "\n ID Spinner : " + spinner_value);
+                "\n Kelas    : " + spinner_nama_kelas.getSelectedItem() +
+                "\n Peserta : " + spinner_nama_pst.getSelectedItem());
         builder.setIcon(getResources().getDrawable(android.R.drawable.ic_input_add));
         builder.setCancelable(false);
         builder.setNegativeButton("Cancel",null);
@@ -165,8 +246,9 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
     }
 
     private void simpanDataDetailKelas() {
-        final String id_kls = add_id_kls_dtl_kls.getText().toString().trim();
-        final String id_pst = add_id_pst_dtl_kls.getText().toString().trim();
+//        final String id_kls = add_id_kls_dtl_kls.getText().toString().trim();
+//        final String id_pst = add_id_pst_dtl_kls.getText().toString().trim();
+        final String id_kls_spinner = String.valueOf(spinner_value_kelas);
         final String id_pst_spinner = String.valueOf(spinner_value);
 
         class SimpanDataDetailKelas extends AsyncTask<Void, Void, String> {
@@ -183,7 +265,7 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
             @Override
             protected String doInBackground(Void... voids) {
                 HashMap<String, String> params = new HashMap<>();
-                params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID_KLS, id_kls);
+                params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID_KLS, id_kls_spinner);
                 params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID_PST, id_pst_spinner);
                 HttpHandler handler = new HttpHandler();
                 String result = handler.sendPostRequest(KonfigurasiDetailKelas.URL_ADD, params);
@@ -197,7 +279,7 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
                 loading.dismiss();
                 Toast.makeText(DetailKelasAddActivity.this, "pesan: " + message,
                         Toast.LENGTH_SHORT).show();
-                clearText();
+//                clearText();
                 Intent myIntent = new Intent(DetailKelasAddActivity.this, MainActivity.class);
                 myIntent.putExtra("keyName", "detail kelas");
                 startActivity(myIntent);
@@ -207,9 +289,9 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
         simpanDataDetailKelas.execute();
     }
 
-    private void clearText() {
-        add_id_kls_dtl_kls.setText("");
-        add_id_pst_dtl_kls.setText("");
-        add_id_kls_dtl_kls.requestFocus();
-    }
+//    private void clearText() {
+//        add_id_kls_dtl_kls.setText("");
+//        add_id_pst_dtl_kls.setText("");
+//        add_id_kls_dtl_kls.requestFocus();
+//    }
 }

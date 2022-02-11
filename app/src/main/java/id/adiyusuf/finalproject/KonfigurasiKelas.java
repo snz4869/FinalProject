@@ -20,8 +20,8 @@ public class KonfigurasiKelas {
     public static final String TAG_JSON_ID = "id_kls";
     public static final String TAG_JSON_TGL_MULAI = "tgl_mulai_kls";
     public static final String TAG_JSON_TGL_AKHIR = "tgl_akhir_kls";
-    public static final String TAG_JSON_ID_INS = "id_ins";
-    public static final String TAG_JSON_ID_MAT = "id_mat";
+    public static final String TAG_JSON_ID_INS = "nama_ins";
+    public static final String TAG_JSON_ID_MAT = "nama_mat";
 
     //variable ID Pegawai
     public static final String KLS_ID = "kls_id";

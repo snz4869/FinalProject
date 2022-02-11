@@ -24,22 +24,11 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-
-            <EditText
-                android:id="@+id/add_id_kls_dtl_kls"
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="ID Kelas"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/add_id_pst_dtl_kls"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="ID Peserta"
-                android:inputType="textEmailAddress" />
+                android:id="@+id/spinner_nama_kelas"
+                android:padding="15dp" />
 
             <Spinner
                 android:layout_width="match_parent"

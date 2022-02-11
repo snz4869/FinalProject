@@ -27,12 +27,11 @@
         android:layout_height="wrap_content"
         android:text="ID Kelas: " />
 
-    <EditText
-        android:id="@+id/edit_id_kls_dtl_kls"
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:id="@+id/spinner_nama_kelas_edit"
+        android:padding="15dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -40,12 +39,11 @@
         android:layout_height="wrap_content"
         android:text="ID Peserta: " />
 
-    <EditText
-        android:id="@+id/edit_id_pst_dtl_kls"
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:id="@+id/spinner_nama_pst_edit"
+        android:padding="15dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
