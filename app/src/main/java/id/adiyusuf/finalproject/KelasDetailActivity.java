@@ -25,8 +25,12 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import id.adiyusuf.finalproject.databinding.ActivityMainBinding;
@@ -109,6 +113,18 @@ public class KelasDetailActivity extends AppCompatActivity implements View.OnCli
 
     private void showDateDialogeTanggalMulai() {
         Calendar newCalendar = Calendar.getInstance();
+//        DateFormat formatter = new SimpleDateFormat("dd-MMM-yy");
+//        Calendar cal = Calendar.getInstance();
+//        Date date = null;
+//        try {
+//            date = formatter.parse(edit_tgl_mulai.toString());
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        cal.setTime(date);
+//        int year = cal.get(Calendar.YEAR);
+//        int month = cal.get(Calendar.MONTH);
+//        int day = cal.get(Calendar.DAY_OF_MONTH);
 
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 

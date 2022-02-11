@@ -2,6 +2,7 @@ package id.adiyusuf.finalproject;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -37,6 +38,7 @@ public class KelasAddActivity extends AppCompatActivity implements View.OnClickL
     private Spinner spinner_materi_kelas,spinner_ins_kelas;
     private String spinner_value_ins, spinner_value_mat;
     private String JSON_STRING_INS, JSON_STRING_MAT;
+    private Toolbar toolbarTambahKelas;
 
 
 
@@ -55,6 +57,11 @@ public class KelasAddActivity extends AppCompatActivity implements View.OnClickL
         btn_datepick_tgl_akhir = findViewById(R.id.btn_datepicker_tgl_akhir);
         spinner_ins_kelas = findViewById(R.id.spinner_ins_kelas);
         spinner_materi_kelas = findViewById(R.id.spinner_materi_kelas);
+        toolbarTambahKelas = findViewById(R.id.toolbarTambahKelas);
+
+        setSupportActionBar(toolbarTambahKelas);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         btn_datepick_tgl_mulai.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +84,12 @@ public class KelasAddActivity extends AppCompatActivity implements View.OnClickL
 
         getDataInstruktur();
         getDataMateri();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void getDataMateri() {
