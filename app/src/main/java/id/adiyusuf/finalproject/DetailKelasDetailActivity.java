@@ -31,13 +31,14 @@ import id.adiyusuf.finalproject.databinding.ActivityMainBinding;
 public class DetailKelasDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText edit_id_dtl_kls; //,edit_id_kls_dtl_kls, edit_id_pst_dtl_kls;
-    String id_dtl_kls,public_nama,public_kelas;
-    Button btn_update_dtl_kls,btn_delete_dtl_kls;
-    private Spinner spinner_nama_pst_edit,spinner_nama_kelas_edit;
+    String id_dtl_kls, public_nama, public_kelas;
+    Button btn_update_dtl_kls, btn_delete_dtl_kls;
+    private Spinner spinner_nama_pst_edit, spinner_nama_kelas_edit;
     private int spinner_value, spinner_value_kelas;
     private String JSON_STRING, JSON_STRING_KLS;
 
     private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +122,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
 //            Toast.makeText(this, "test: "+listNamaKls.toString(), Toast.LENGTH_SHORT).show();
 
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
-                    (this, android.R.layout.simple_spinner_item,listNamaKls); //selected item will look like a spinner set from XML
+                    (this, android.R.layout.simple_spinner_item, listNamaKls); //selected item will look like a spinner set from XML
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner_nama_kelas_edit.setAdapter(spinnerArrayAdapter);
 
@@ -200,7 +201,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
             }
 
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
-                    (this, android.R.layout.simple_spinner_item,listNama); //selected item will look like a spinner set from XML
+                    (this, android.R.layout.simple_spinner_item, listNama); //selected item will look like a spinner set from XML
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner_nama_pst_edit.setAdapter(spinnerArrayAdapter);
 
@@ -208,7 +209,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     spinner_value = Integer.parseInt(listId.get(i));
-                    Toast.makeText(DetailKelasDetailActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailKelasDetailActivity.this, "True Value: " + spinner_value, Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -225,21 +226,21 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
 
     private void getJSON() {
         // batuan dari class AsynTask
-        class GetJSON extends AsyncTask<Void,Void,String> { // boleh membuat class dalam method (Inner Class)
+        class GetJSON extends AsyncTask<Void, Void, String> { // boleh membuat class dalam method (Inner Class)
             ProgressDialog loading;
 
             @Override
             protected void onPreExecute() { // sebelum proses
                 super.onPreExecute();
                 loading = ProgressDialog.show(DetailKelasDetailActivity.this,
-                        "Mengambil Data","Harap Menunggu...",
-                        false,false);
+                        "Mengambil Data", "Harap Menunggu...",
+                        false, false);
             }
 
             @Override
             protected String doInBackground(Void... voids) { // saat proses
                 HttpHandler handler = new HttpHandler();
-                String result = handler.sendGetResponse(KonfigurasiDetailKelas.URL_GET_DETAIL,id_dtl_kls);
+                String result = handler.sendGetResponse(KonfigurasiDetailKelas.URL_GET_DETAIL, id_dtl_kls);
                 return result;
             }
 
@@ -270,48 +271,54 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
 
 //            edit_id_kls_dtl_kls.setText(id_kls);
 //            edit_id_pst_dtl_kls.setText(id_pst);
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         onBackPressed();
         return true;
     }
+
     @Override
     public void onClick(View myButton) {
-        if(myButton == btn_update_dtl_kls){
+        if (myButton == btn_update_dtl_kls) {
             updateDataDetailKelas();
-        } else if(myButton == btn_delete_dtl_kls){
+        } else if (myButton == btn_delete_dtl_kls) {
             confirmDeleteDataDetailKelas();
         }
     }
 
     private void updateDataDetailKelas() {
         // variable data pegawai yang akan diubah
-        final String id_kelas = Integer.toString(spinner_value);
-        final String id_peserta = Integer.toString(spinner_value_kelas);
+        final String id_kelas = Integer.toString(spinner_value_kelas);
+        final String id_peserta = Integer.toString(spinner_value);
+        Toast.makeText(DetailKelasDetailActivity.this, "id peserta: " + id_peserta, Toast.LENGTH_SHORT).show();
 
-        class UpdateDataDetailKelas extends AsyncTask<Void,Void,String>{
+        class UpdateDataDetailKelas extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
                 loading = ProgressDialog.show(DetailKelasDetailActivity.this,
-                        "Mengubah Data","Harap Tunggu",
-                        false,false);
+                        "Mengubah Data", "Harap Tunggu",
+                        false, false);
             }
 
             @Override
             protected String doInBackground(Void... voids) {
-                HashMap<String,String> params = new HashMap<>();
-                params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID,id_dtl_kls);
-                params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID_KLS,id_kelas);
+                HashMap<String, String> params = new HashMap<>();
+                params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID, id_dtl_kls);
+                params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID_KLS, id_kelas);
                 params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID_PST,id_peserta);
+
+//                params.put(KonfigurasiDetailKelas.KEY_DTL_KLS_ID_PST, "3");
                 HttpHandler handler = new HttpHandler();
                 String result = handler.sendPostRequest(KonfigurasiDetailKelas.URL_UPDATE, params);
+
 
                 return result;
             }
@@ -319,7 +326,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                loading.dismiss();;
+                loading.dismiss();
 
                 Fragment fragment = null;
 
@@ -343,7 +350,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
         builder.setMessage("Are you sure want to delete this data?");
         builder.setIcon(getResources().getDrawable(android.R.drawable.ic_delete));
         builder.setCancelable(false);
-        builder.setNegativeButton("Cancel",null);
+        builder.setNegativeButton("Cancel", null);
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -355,7 +362,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
     }
 
     private void deleteDataDetailKelas() {
-        class DeleteDataDetailKelas extends AsyncTask<Void,Void, String>{
+        class DeleteDataDetailKelas extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;
 
             @Override
@@ -363,8 +370,8 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
                 super.onPreExecute();
 
                 loading = ProgressDialog.show(DetailKelasDetailActivity.this,
-                        "Menghapus Data","Harap Tunggu",
-                        false,false);
+                        "Menghapus Data", "Harap Tunggu",
+                        false, false);
             }
 
             @Override
@@ -380,7 +387,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
                 super.onPostExecute(s);
 
                 loading.dismiss();
-                Toast.makeText(DetailKelasDetailActivity.this,"Pesan: " + s,
+                Toast.makeText(DetailKelasDetailActivity.this, "Pesan: " + s,
                         Toast.LENGTH_SHORT).show();
                 Intent myIntent = new Intent(DetailKelasDetailActivity.this, MainActivity.class);
                 myIntent.putExtra("keyName", "detail kelas");
