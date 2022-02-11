@@ -17,23 +17,23 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/txt_tgl_mulai_kls"
+        android:id="@+id/txt_ins_kls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_weight="1"
-        android:text="Mulai"
+        android:text="instruktur"
         android:textAlignment="viewStart"
         android:textColor="#4A0808"
         android:textSize="24sp"
         android:textStyle="bold" />
     <TextView
-        android:id="@+id/txt_tgl_akhir_kls"
+        android:id="@+id/txt_materi_kls"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_weight="1"
-        android:text="Akhir"
+        android:text="materi"
         android:textAlignment="viewStart"
         android:textColor="#4A0808"
         android:textSize="24sp"

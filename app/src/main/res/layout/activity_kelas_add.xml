@@ -55,21 +55,17 @@
                 android:hint="Tanggal Akhir"
                 android:inputType="textEmailAddress" />
 
-            <EditText
-                android:id="@+id/add_id_ins_kls"
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="ID Instruktur"
-                android:inputType="number" />
+                android:id="@+id/spinner_ins_kelas"
+                android:padding="15dp" />
 
-            <EditText
-                android:id="@+id/add_id_mat_kls"
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="ID Materi"
-                android:inputType="number" />
+                android:id="@+id/spinner_materi_kelas"
+                android:padding="15dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -158,12 +158,12 @@ public class KelasFragment extends Fragment {
             for (int i = 0; i < result.length(); i++) {
                 JSONObject object = result.getJSONObject(i);
                 String id_kls = object.getString(KonfigurasiKelas.TAG_JSON_ID);
-                String tgl_mulai = object.getString(KonfigurasiKelas.TAG_JSON_TGL_MULAI);
-                String tgl_akhir = object.getString(KonfigurasiKelas.TAG_JSON_TGL_AKHIR);
+                String instruktur = object.getString(KonfigurasiKelas.TAG_JSON_ID_INS);
+                String materi = object.getString(KonfigurasiKelas.TAG_JSON_ID_MAT);
                 HashMap<String, String> kelas = new HashMap<>();
                 kelas.put(KonfigurasiKelas.TAG_JSON_ID, id_kls);
-                kelas.put(KonfigurasiKelas.TAG_JSON_TGL_MULAI, tgl_mulai);
-                kelas.put(KonfigurasiKelas.TAG_JSON_TGL_AKHIR, tgl_akhir);
+                kelas.put(KonfigurasiKelas.TAG_JSON_ID_INS, instruktur);
+                kelas.put(KonfigurasiKelas.TAG_JSON_ID_MAT, materi);
 
                 //ubah format JSON menjadi Array List
                 list.add(kelas);
@@ -176,9 +176,9 @@ public class KelasFragment extends Fragment {
         ListAdapter adapter = new SimpleAdapter(
                 getActivity(), list,
                 R.layout.list_item_kelas,
-                new String[]{KonfigurasiKelas.TAG_JSON_ID, KonfigurasiKelas.TAG_JSON_TGL_MULAI,
-                        KonfigurasiKelas.TAG_JSON_TGL_AKHIR},
-                new int[]{R.id.txt_id_kls, R.id.txt_tgl_mulai_kls, R.id.txt_tgl_akhir_kls}
+                new String[]{KonfigurasiKelas.TAG_JSON_ID, KonfigurasiKelas.TAG_JSON_ID_INS,
+                        KonfigurasiKelas.TAG_JSON_ID_MAT},
+                new int[]{R.id.txt_id_kls, R.id.txt_ins_kls, R.id.txt_materi_kls}
         );
         list_view_kls.setAdapter(adapter);
     }
