@@ -86,7 +86,17 @@ public class CariInstrukturActivity extends AppCompatActivity {
             protected void onPostExecute(String message) { // setelah proses
                 super.onPostExecute(message);
                 loading.dismiss();
-                setDetailData(message);
+
+                if (message.contains("error")) {
+//                    Toast.makeText(CariInstrukturActivity.this, "hasil: " + message, Toast.LENGTH_LONG).show();
+                    alertMsg();
+                    txt_cari_id_ins.setText("");
+                    txt_cari_nama_ins.setText("");
+                    txt_cari_email_ins.setText("");
+                    txt_cari_hp_ins.setText("");
+                } else {
+                    setDetailData(message);
+                }
             }
         }
         GetData getDATA = new GetData();
@@ -99,15 +109,16 @@ public class CariInstrukturActivity extends AppCompatActivity {
             JSONArray result = jsonObject.getJSONArray(Konfigurasi.TAG_JSON_ARRAY);
             JSONObject object = result.getJSONObject(0);
 
+            String id_cek_ins = object.getString(Konfigurasi.TAG_JSON_ID);
             String nama_ins = object.getString(Konfigurasi.TAG_JSON_NAMA);
             String email = object.getString(Konfigurasi.TAG_JSON_EMAIL);
             String hp_ins = object.getString(Konfigurasi.TAG_JSON_HP);
-
 
             txt_cari_id_ins.setText("ID: " + cari_value);
             txt_cari_nama_ins.setText("Nama: " + nama_ins);
             txt_cari_email_ins.setText("Email: " + email);
             txt_cari_hp_ins.setText("No Telp: " + hp_ins);
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
