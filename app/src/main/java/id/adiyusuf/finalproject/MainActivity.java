@@ -100,6 +100,13 @@ public class MainActivity extends AppCompatActivity {
                 callFragment(fragmentMenu);
                 binding.navView.setCheckedItem(R.id.nav_detail_kelas);
                 break;
+            case "cari":
+                getSupportActionBar().setTitle("Cari Data");
+                fragmentMenu = new CariDataFragment();
+                binding.drawer.closeDrawer(GravityCompat.START);
+                callFragment(fragmentMenu);
+                binding.navView.setCheckedItem(R.id.nav_cari_data);
+                break;
         }
 
         // membuka drawer
@@ -158,6 +165,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_detail_kelas:
                         getSupportActionBar().setTitle("Detail Kelas");
                         fragment = new DetailKelasFragment();
+                        binding.drawer.closeDrawer(GravityCompat.START);
+                        callFragment(fragment);
+                        break;
+                    case R.id.nav_cari_data:
+                        getSupportActionBar().setTitle("Cari Data");
+                        fragment = new CariDataFragment();
                         binding.drawer.closeDrawer(GravityCompat.START);
                         callFragment(fragment);
                         break;

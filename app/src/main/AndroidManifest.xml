@@ -13,6 +13,15 @@
         android:theme="@style/Theme.FinalProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CariMateriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CariPesertaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CariInstrukturActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailKelasDetailActivity"
             android:exported="false" />
         <activity
