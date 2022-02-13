@@ -8,21 +8,33 @@
     android:padding="16dp"
     tools:context=".CariDataFragment">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cari_ins"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cari Instruktur" />
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="Cari Instruktur"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cari_pst"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cari Peserta" />
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="Cari Peserta"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cari_mat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cari Materi" />
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="Cari Materi"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 </LinearLayout>

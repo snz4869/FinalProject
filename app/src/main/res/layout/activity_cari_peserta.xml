@@ -18,10 +18,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_cari_pst_mat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             android:text="Cari" />
     </LinearLayout>
 

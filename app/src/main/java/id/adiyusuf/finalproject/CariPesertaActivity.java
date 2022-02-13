@@ -186,7 +186,7 @@ public class CariPesertaActivity extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     spinner_value = listId.get(i);
-                    Toast.makeText(CariPesertaActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(CariPesertaActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
                 }
 
                 @Override

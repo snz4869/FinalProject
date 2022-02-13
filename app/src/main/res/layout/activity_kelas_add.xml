@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/holo_green_light"
             android:minHeight="?attr/actionBarSize"
-            app:title="Tambah Kelas"
+            app:title="Kelas"
             app:titleTextColor="@color/white" />
 
         <LinearLayout
@@ -25,9 +25,12 @@
             android:padding="16dp">
 
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_datepicker_tgl_mulai"
                 android:text="Tanggal Mulai"
+                android:background="@android:color/holo_green_dark"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -40,9 +43,12 @@
                 android:hint="Tanggal Mulai"
                 android:inputType="textPersonName" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_datepicker_tgl_akhir"
                 android:text="Tanggal Akhir"
+                android:background="@android:color/holo_green_dark"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -73,20 +79,26 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_add_kls"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
                     android:layout_weight="1"
+                    android:background="@android:color/holo_green_dark"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
                     android:text="Tambah" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_cancel_kls"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
                     android:layout_weight="1"
+                    android:background="@android:color/holo_green_dark"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
                     android:text="Batal" />
 
             </LinearLayout>

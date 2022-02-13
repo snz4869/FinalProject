@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/holo_green_light"
             android:minHeight="?attr/actionBarSize"
-            app:title="Tambah Instruktur"
+            app:title="Instruktur"
             app:titleTextColor="@color/white" />
 
         <LinearLayout
@@ -55,20 +55,26 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_add_ins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
                     android:layout_weight="1"
+                    android:background="@android:color/holo_green_dark"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
                     android:text="Tambah" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_cancel_ins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="6dp"
                     android:layout_weight="1"
+                    android:background="@android:color/holo_green_dark"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
                     android:text="Batal" />
 
             </LinearLayout>

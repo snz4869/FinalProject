@@ -22,11 +22,14 @@
             android:hint="ID Instruktur"
             android:inputType="textPersonName" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_cari_detail_ins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/holo_green_dark"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             android:text="Cari" />
 
     </LinearLayout>

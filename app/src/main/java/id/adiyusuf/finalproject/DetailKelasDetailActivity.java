@@ -209,7 +209,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     spinner_value = Integer.parseInt(listId.get(i));
-                    Toast.makeText(DetailKelasDetailActivity.this, "True Value: " + spinner_value, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(DetailKelasDetailActivity.this, "True Value: " + spinner_value, Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -295,7 +295,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
         // variable data pegawai yang akan diubah
         final String id_kelas = Integer.toString(spinner_value_kelas);
         final String id_peserta = Integer.toString(spinner_value);
-        Toast.makeText(DetailKelasDetailActivity.this, "id peserta: " + id_peserta, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(DetailKelasDetailActivity.this, "id peserta: " + id_peserta, Toast.LENGTH_SHORT).show();
 
         class UpdateDataDetailKelas extends AsyncTask<Void, Void, String> {
             ProgressDialog loading;

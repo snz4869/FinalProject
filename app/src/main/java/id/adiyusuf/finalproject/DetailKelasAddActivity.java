@@ -98,7 +98,7 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
             jsonObject = new JSONObject(JSON_STRING_KLS);
             JSONArray result = jsonObject.getJSONArray(KonfigurasiKelas.TAG_JSON_ARRAY);
             Log.d("DATA JSON: ", JSON_STRING_KLS);
-            Toast.makeText(DetailKelasAddActivity.this, "DATA JSON Result: " + result, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(DetailKelasAddActivity.this, "DATA JSON Result: " + result, Toast.LENGTH_SHORT).show();
 
             for (int i = 0; i < result.length(); i++) {
                 JSONObject object = result.getJSONObject(i);
@@ -107,7 +107,7 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
                 listIdKls.add(id_kls);
                 listNamaKls.add(nama_kls);
             }
-            Toast.makeText(this, "test: "+listNamaKls.toString(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "test: "+listNamaKls.toString(), Toast.LENGTH_SHORT).show();
 
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
                     (this, android.R.layout.simple_spinner_item,listNamaKls); //selected item will look like a spinner set from XML
@@ -118,7 +118,7 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     spinner_value_kelas = Integer.parseInt(listIdKls.get(i));
-                    Toast.makeText(DetailKelasAddActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(DetailKelasAddActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
@@ -195,7 +195,7 @@ public class DetailKelasAddActivity extends AppCompatActivity implements View.On
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     spinner_value = Integer.parseInt(listId.get(i));
-                    Toast.makeText(DetailKelasAddActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(DetailKelasAddActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
