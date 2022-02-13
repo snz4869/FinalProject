@@ -287,8 +287,24 @@ public class KelasAddActivity extends AppCompatActivity implements View.OnClickL
             myIntent.putExtra("keyName", "kelas");
             startActivity(myIntent);
         } else if (v == btn_add_kls) {
-            confirmAddDataKelas();
+            if (add_tgl_mulai.getText().toString().equals("") || add_tgl_akhir.getText().toString().equals("")) {
+                validation();
+            } else {
+                confirmAddDataKelas();
+            }
         }
+    }
+
+    private void validation() {
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Message");
+        builder.setMessage("Tanggal Mulai Dan Akhir Tidak Boleh Kosong");
+        builder.setIcon(getResources().getDrawable(android.R.drawable.stat_sys_warning));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Ok",null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void confirmAddDataKelas() {

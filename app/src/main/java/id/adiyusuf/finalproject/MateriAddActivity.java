@@ -40,8 +40,24 @@ public class MateriAddActivity extends AppCompatActivity implements View.OnClick
             myIntent.putExtra("keyName", "materi");
             startActivity(myIntent);
         } else if (v == btn_add_mat) {
-            confirmAddDataMateri();
+            if (add_nama_mat.getText().toString().equals("")) {
+                validation();
+            } else {
+                confirmAddDataMateri();
+            }
         }
+    }
+
+    private void validation() {
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Message");
+        builder.setMessage("Materi Tidak Boleh Kosong");
+        builder.setIcon(getResources().getDrawable(android.R.drawable.stat_sys_warning));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Ok",null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void confirmAddDataMateri() {

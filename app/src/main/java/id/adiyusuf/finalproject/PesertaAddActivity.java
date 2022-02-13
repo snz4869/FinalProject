@@ -43,8 +43,24 @@ public class PesertaAddActivity extends AppCompatActivity implements View.OnClic
             myIntent.putExtra("keyName", "peserta");
             startActivity(myIntent);
         } else if (v == btn_add_pst) {
-            confirmAddDataPeserta();
+            if (add_nama_pst.getText().toString().equals("")) {
+                validation();
+            } else {
+                confirmAddDataPeserta();
+            }
         }
+    }
+
+    private void validation() {
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Message");
+        builder.setMessage("Nama Peserta Tidak Boleh Kosong");
+        builder.setIcon(getResources().getDrawable(android.R.drawable.stat_sys_warning));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Ok",null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void confirmAddDataPeserta() {

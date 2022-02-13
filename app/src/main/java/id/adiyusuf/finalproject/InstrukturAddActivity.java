@@ -42,9 +42,25 @@ public class InstrukturAddActivity extends AppCompatActivity implements View.OnC
             myIntent.putExtra("keyName", "instruktur");
             startActivity(myIntent);
         } else if (v == btn_add_ins) {
-            confirmAddDataInstruktur();
+            if (add_nama_ins.getText().toString().equals("")) {
+                validation();
+            } else {
+                confirmAddDataInstruktur();
+            }
             //simpanDataInstruktur();
         }
+    }
+
+    private void validation() {
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Message");
+        builder.setMessage("Nama Instruktur Tidak Boleh Kosong");
+        builder.setIcon(getResources().getDrawable(android.R.drawable.stat_sys_warning));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Ok",null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void confirmAddDataInstruktur() {

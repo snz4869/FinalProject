@@ -125,10 +125,25 @@ public class PesertaDetailActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View myButton) {
         if(myButton == btn_update_pst){
-            updateDataPeserta();
+            if (edit_nama_pst.getText().toString().equals("")) {
+                validation();
+            } else {
+                updateDataPeserta();
+            }
         } else if(myButton == btn_delete_pst){
             confirmDeleteDataPeserta();
         }
+    }
+    private void validation() {
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Message");
+        builder.setMessage("Nama Peserta Tidak Boleh Kosong");
+        builder.setIcon(getResources().getDrawable(android.R.drawable.stat_sys_warning));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Ok",null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void confirmDeleteDataPeserta() {

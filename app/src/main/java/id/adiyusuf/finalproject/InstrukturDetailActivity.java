@@ -128,10 +128,26 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View myButton) {
         if(myButton == btn_update_ins){
-            updateDataInstruktur();
+            if (edit_nama_ins.getText().toString().equals("")) {
+                validation();
+            } else {
+                updateDataInstruktur();
+            }
         } else if(myButton == btn_delete_ins){
             confirmDeleteDataInstruktur();
         }
+    }
+
+    private void validation() {
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Message");
+        builder.setMessage("Nama Instruktur Tidak Boleh Kosong");
+        builder.setIcon(getResources().getDrawable(android.R.drawable.stat_sys_warning));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Ok",null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void confirmDeleteDataInstruktur() {
