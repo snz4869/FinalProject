@@ -3,6 +3,7 @@ package id.adiyusuf.finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.app.ProgressDialog;
@@ -28,6 +29,7 @@ public class MateriDetailActivity extends AppCompatActivity implements View.OnCl
     String id_mat;
     Button btn_update_mat,btn_delete_mat;
     private ActivityMainBinding binding;
+    Toolbar toolbar_mat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,11 @@ public class MateriDetailActivity extends AppCompatActivity implements View.OnCl
         edit_nama_mat = findViewById(R.id.edit_nama_mat);
         btn_update_mat = findViewById(R.id.btn_update_mat);
         btn_delete_mat = findViewById(R.id.btn_delete_mat);
+        toolbar_mat = findViewById(R.id.toolbar_mat);
+
+        setSupportActionBar(toolbar_mat);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent receiveIntent = getIntent();
         id_mat = receiveIntent.getStringExtra(KonfigurasiMateri.MAT_ID);
@@ -47,6 +54,12 @@ public class MateriDetailActivity extends AppCompatActivity implements View.OnCl
 
         btn_update_mat.setOnClickListener(this);
         btn_delete_mat.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void getJSON() {

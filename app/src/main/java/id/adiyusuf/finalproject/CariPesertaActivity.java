@@ -1,6 +1,7 @@
 package id.adiyusuf.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -27,6 +28,7 @@ public class CariPesertaActivity extends AppCompatActivity {
     private Spinner spinner_cari_pst;
     private ListView list_cari_pst;
     private String spinner_value,JSON_STRING_PST,JSON_STRING_KLS;
+    Toolbar toolbar_c_pst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,11 @@ public class CariPesertaActivity extends AppCompatActivity {
         btn_cari_pst_mat = findViewById(R.id.btn_cari_pst_mat);
         spinner_cari_pst = findViewById(R.id.spinner_cari_pst);
         list_cari_pst = findViewById(R.id.list_cari_pst);
+        toolbar_c_pst = findViewById(R.id.toolbar_c_pst);
+
+        setSupportActionBar(toolbar_c_pst);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         
         getDataPeserta();
 
@@ -45,6 +52,12 @@ public class CariPesertaActivity extends AppCompatActivity {
                 getDataKelas();
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void getDataKelas() {

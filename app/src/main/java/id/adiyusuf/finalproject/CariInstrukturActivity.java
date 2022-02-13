@@ -2,6 +2,7 @@ package id.adiyusuf.finalproject;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -21,6 +22,7 @@ public class CariInstrukturActivity extends AppCompatActivity {
     EditText cari_id_ins;
     TextView txt_cari_id_ins, txt_cari_nama_ins, txt_cari_email_ins, txt_cari_hp_ins;
     String cari_value;
+    Toolbar toolbar_c_ins;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,11 @@ public class CariInstrukturActivity extends AppCompatActivity {
         txt_cari_nama_ins = findViewById(R.id.txt_cari_nama_ins);
         txt_cari_email_ins = findViewById(R.id.txt_cari_email_ins);
         txt_cari_hp_ins = findViewById(R.id.txt_cari_hp_ins);
+        toolbar_c_ins = findViewById(R.id.toolbar_c_ins);
+
+        setSupportActionBar(toolbar_c_ins);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         btn_cari_detail_ins.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +48,12 @@ public class CariInstrukturActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void cariDataInstruktur() {

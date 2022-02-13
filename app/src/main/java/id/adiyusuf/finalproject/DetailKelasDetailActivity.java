@@ -3,6 +3,7 @@ package id.adiyusuf.finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.app.ProgressDialog;
@@ -36,6 +37,7 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
     private Spinner spinner_nama_pst_edit, spinner_nama_kelas_edit;
     private int spinner_value, spinner_value_kelas;
     private String JSON_STRING, JSON_STRING_KLS;
+    Toolbar toolbar_d_kls;
 
     private ActivityMainBinding binding;
 
@@ -51,6 +53,11 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
         btn_delete_dtl_kls = findViewById(R.id.btn_delete_dtl_kls);
         spinner_nama_pst_edit = findViewById(R.id.spinner_nama_pst_edit);
         spinner_nama_kelas_edit = findViewById(R.id.spinner_nama_kelas_edit);
+        toolbar_d_kls = findViewById(R.id.toolbar_d_kls);
+
+        setSupportActionBar(toolbar_d_kls);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent receiveIntent = getIntent();
         id_dtl_kls = receiveIntent.getStringExtra(KonfigurasiDetailKelas.DTL_KLS_ID);
@@ -63,6 +70,12 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
 
         getDataKelas();
         getDataPesetra();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void getDataKelas() {

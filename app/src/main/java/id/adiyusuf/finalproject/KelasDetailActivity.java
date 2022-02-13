@@ -3,6 +3,7 @@ package id.adiyusuf.finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.app.DatePickerDialog;
@@ -45,6 +46,7 @@ public class KelasDetailActivity extends AppCompatActivity implements View.OnCli
     private ActivityMainBinding binding;
     private DatePickerDialog datePickerDialog;
     private Spinner spinner_ins_kls_edit, spinner_mat_kls_edit;
+    Toolbar toolbar_kls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,11 @@ public class KelasDetailActivity extends AppCompatActivity implements View.OnCli
         btn_datepicker_akhir_edit  = findViewById(R.id.btn_datepicker_akhir_edit);
         spinner_ins_kls_edit = findViewById(R.id.spinner_ins_kls_edit);
         spinner_mat_kls_edit = findViewById(R.id.spinner_mat_kls_edit);
+        toolbar_kls = findViewById(R.id.toolbar_kls);
+
+        setSupportActionBar(toolbar_kls);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent receiveIntent = getIntent();
         id_kls = receiveIntent.getStringExtra(KonfigurasiKelas.KLS_ID);
@@ -88,6 +95,12 @@ public class KelasDetailActivity extends AppCompatActivity implements View.OnCli
 
         getDataInstruktur();
         getDataMateri();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void showDateDialogeTanggalAkhir() {

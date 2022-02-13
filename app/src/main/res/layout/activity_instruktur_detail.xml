@@ -10,7 +10,7 @@
         tools:context=".InstrukturDetailActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_ins"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_green_light"
@@ -28,6 +28,8 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="Id:" />
 
             <EditText
@@ -42,6 +44,8 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="Nama: " />
 
             <EditText
@@ -55,6 +59,8 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="Email: " />
 
             <EditText
@@ -68,6 +74,8 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="No Telp:" />
 
             <EditText
@@ -75,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="number" />
 
             <LinearLayout
                 android:layout_width="match_parent"

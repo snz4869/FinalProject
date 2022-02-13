@@ -8,11 +8,9 @@
         android:id="@+id/txt_id_pst"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_weight="0"
         android:text="No"
         android:textAlignment="center"
-        android:textColor="#4A0808"
         android:textSize="20sp"
         android:textStyle="normal" />
 
@@ -24,7 +22,6 @@
         android:layout_weight="1"
         android:text="TextView"
         android:textAlignment="viewStart"
-        android:textColor="#4A0808"
         android:textSize="20sp"
         android:textStyle="normal" />
 </LinearLayout>

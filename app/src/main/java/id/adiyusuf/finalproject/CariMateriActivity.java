@@ -1,6 +1,7 @@
 package id.adiyusuf.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -27,6 +28,7 @@ public class CariMateriActivity extends AppCompatActivity {
     private Spinner spinner_cari_mat;
     private ListView list_cari_mat;
     private String spinner_value,JSON_STRING_PST,JSON_STRING_MAT;
+    Toolbar toolbar_c_mat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,11 @@ public class CariMateriActivity extends AppCompatActivity {
         btn_cari_mat_pst = findViewById(R.id.btn_cari_mat_pst);
         spinner_cari_mat = findViewById(R.id.spinner_cari_mat);
         list_cari_mat = findViewById(R.id.list_cari_mat);
+        toolbar_c_mat = findViewById(R.id.toolbar_c_mat);
+
+        setSupportActionBar(toolbar_c_mat);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         getDataMateri();
 
@@ -45,6 +52,12 @@ public class CariMateriActivity extends AppCompatActivity {
                 getDataPeserta();
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void getDataMateri() {

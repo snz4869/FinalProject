@@ -10,7 +10,7 @@
         tools:context=".DetailKelasDetailActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_d_kls"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_green_light"
@@ -28,7 +28,9 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Id:" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="ID:" />
 
             <EditText
                 android:id="@+id/edit_id_dtl_kls"
@@ -36,25 +38,31 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:enabled="false"
+                android:layout_marginBottom="16dp"
                 android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ID Kelas: " />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Kelas: " />
 
             <Spinner
                 android:id="@+id/spinner_nama_kelas_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:padding="15dp" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="ID Peserta: " />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Peserta: " />
 
             <Spinner
                 android:id="@+id/spinner_nama_pst_edit"

@@ -59,11 +59,6 @@ public class KelasAddActivity extends AppCompatActivity implements View.OnClickL
         spinner_materi_kelas = findViewById(R.id.spinner_materi_kelas);
         toolbarTambahKelas = findViewById(R.id.toolbarTambahKelas);
 
-        setSupportActionBar(toolbarTambahKelas);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
         btn_datepick_tgl_mulai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,12 +79,6 @@ public class KelasAddActivity extends AppCompatActivity implements View.OnClickL
 
         getDataInstruktur();
         getDataMateri();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 
     private void getDataMateri() {

@@ -3,6 +3,7 @@ package id.adiyusuf.finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -30,6 +31,7 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
     EditText edit_id_ins,edit_nama_ins, edit_email, edit_hp_ins;
     String id_ins;
     Button btn_update_ins,btn_delete_ins;
+    Toolbar toolbar_ins;
     private ActivityMainBinding binding;
 
     @Override
@@ -46,6 +48,11 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
         edit_hp_ins = findViewById(R.id.edit_hp_ins);
         btn_update_ins = findViewById(R.id.btn_update_ins);
         btn_delete_ins = findViewById(R.id.btn_delete_ins);
+        toolbar_ins = findViewById(R.id.toolbar_ins);
+
+        setSupportActionBar(toolbar_ins);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent receiveIntent = getIntent();
         id_ins = receiveIntent.getStringExtra(Konfigurasi.INS_ID);
@@ -55,6 +62,12 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
 
         btn_update_ins.setOnClickListener(this);
         btn_delete_ins.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void getJSON() {

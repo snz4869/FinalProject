@@ -3,6 +3,7 @@ package id.adiyusuf.finalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.app.ProgressDialog;
@@ -28,6 +29,7 @@ public class PesertaDetailActivity extends AppCompatActivity implements View.OnC
     EditText edit_id_pst,edit_nama_pst, edit_email_pst, edit_hp_pst,edit_instansi;
     String id_pst;
     Button btn_update_pst,btn_delete_pst;
+    Toolbar toolbar_pst;
     private ActivityMainBinding binding;
 
     @Override
@@ -42,6 +44,11 @@ public class PesertaDetailActivity extends AppCompatActivity implements View.OnC
         edit_instansi = findViewById(R.id.edit_instansi);
         btn_update_pst = findViewById(R.id.btn_update_pst);
         btn_delete_pst = findViewById(R.id.btn_delete_pst);
+        toolbar_pst = findViewById(R.id.toolbar_pst);
+
+        setSupportActionBar(toolbar_pst);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Intent receiveIntent = getIntent();
         id_pst = receiveIntent.getStringExtra(KonfigurasiPeserta.PST_ID);
@@ -51,6 +58,12 @@ public class PesertaDetailActivity extends AppCompatActivity implements View.OnC
 
         btn_update_pst.setOnClickListener(this);
         btn_delete_pst.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void getJSON() {

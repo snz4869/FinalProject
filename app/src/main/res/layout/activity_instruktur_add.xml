@@ -29,6 +29,7 @@
                 android:id="@+id/add_nama_ins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:hint="Nama Instruktur"
                 android:inputType="textPersonName" />
@@ -37,6 +38,7 @@
                 android:id="@+id/add_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:hint="Email"
                 android:inputType="textEmailAddress" />
@@ -45,6 +47,7 @@
                 android:id="@+id/add_hp_ins"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:ems="10"
                 android:hint="No Telp"
                 android:inputType="number" />

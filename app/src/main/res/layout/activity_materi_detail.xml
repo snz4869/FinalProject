@@ -10,7 +10,7 @@
         tools:context=".MateriDetailActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_mat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_green_light"
@@ -28,6 +28,8 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="Id:" />
 
             <EditText
@@ -41,6 +43,8 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:text="Nama: " />
 
             <EditText
