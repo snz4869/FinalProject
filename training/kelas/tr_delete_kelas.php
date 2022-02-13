@@ -1,6 +1,6 @@
 <?php 
  //Mendapatkan Nilai ID
- $id_detail_kls = $_GET['tb_kelas'];
+ $id_kls = $_GET['id_kls'];
  
  //Import File Koneksi Database
  require_once('../koneksi.php');
