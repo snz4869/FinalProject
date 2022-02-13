@@ -4,6 +4,7 @@ public class KonfigurasiKelas {
     // url web API berada
     public static final String URL_GET_ALL = "http://192.168.92.102/training/kelas/tr_datas_kelas.php";
     public static final String URL_GET_DETAIL = "http://192.168.92.102/training/kelas/tr_detail_kelas.php?id_kls=";
+    public static final String URL_GET_DETAIL_PST = "http://192.168.92.102/training/kelas/tr_detail_kelas_id_pst.php?id_pst=";
     public static final String URL_ADD = "http://192.168.92.102/training/kelas/tr_add_kelas.php";
     public static final String URL_UPDATE = "http://192.168.92.102/training/kelas/tr_update_kelas.php";
     public static final String URL_DELETE = "http://192.168.92.102/training/kelas/tr_delete_kelas.php?id_kls=";
