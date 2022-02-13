@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 Toast.makeText(getApplicationContext(), "Whatsapp Admin", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://wa.me/6283879438051"));
+                intent.setData(Uri.parse("https://www.linkedin.com/in/adi-yusuf-a80579199/"));
                 startActivity(intent);
             }
         });
