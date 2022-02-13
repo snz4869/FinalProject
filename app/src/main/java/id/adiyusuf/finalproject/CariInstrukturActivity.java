@@ -99,9 +99,9 @@ public class CariInstrukturActivity extends AppCompatActivity {
             protected void onPostExecute(String message) { // setelah proses
                 super.onPostExecute(message);
                 loading.dismiss();
+//                Toast.makeText(CariInstrukturActivity.this, "hasil: " + message, Toast.LENGTH_LONG).show();
 
-                if (message.contains("error")) {
-//                    Toast.makeText(CariInstrukturActivity.this, "hasil: " + message, Toast.LENGTH_LONG).show();
+                if (message.contains("error") || message.contains("Warning")) {
                     alertMsg();
                     txt_cari_id_ins.setText("");
                     txt_cari_nama_ins.setText("");
