@@ -6,36 +6,36 @@
 
         <item
             android:id="@+id/nav_home"
-            android:icon="@android:drawable/ic_menu_today"
+            android:icon="@drawable/nav_home"
             android:title="Home" />
 
         <item
             android:id="@+id/nav_instruktur"
-            android:icon="@android:drawable/ic_dialog_email"
+            android:icon="@drawable/nav_ins"
             android:title="Instruktur" />
 
         <item
             android:id="@+id/nav_materi"
-            android:icon="@android:drawable/ic_menu_call"
+            android:icon="@drawable/nav_mat"
             android:title="Materi" />
 
         <item
             android:id="@+id/nav_peserta"
-            android:icon="@android:drawable/ic_menu_call"
+            android:icon="@drawable/nav_pst"
             android:title="Peserta" />
 
         <item
             android:id="@+id/nav_kelas"
-            android:icon="@android:drawable/ic_menu_call"
+            android:icon="@drawable/nav_kls"
             android:title="Kelas" />
 
         <item
             android:id="@+id/nav_detail_kelas"
-            android:icon="@android:drawable/ic_menu_call"
+            android:icon="@drawable/nav_details"
             android:title="Detail Kelas" />
         <item
             android:id="@+id/nav_cari_data"
-            android:icon="@android:drawable/ic_menu_call"
+            android:icon="@drawable/nav_cari"
             android:title="Cari Data" />
     </group>
 </menu>

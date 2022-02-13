@@ -1,12 +1,19 @@
 package id.adiyusuf.finalproject;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    String JSON_STRING;
+    TextView txt_c_ins, txt_c_mat, txt_c_pst, txt_c_kls, txt_c_detail_kls;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +68,77 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        txt_c_ins = view.findViewById(R.id.txt_c_ins);
+        txt_c_mat = view.findViewById(R.id.txt_c_mat);
+        txt_c_pst = view.findViewById(R.id.txt_c_pst);
+        txt_c_kls = view.findViewById(R.id.txt_c_kls);
+        txt_c_detail_kls = view.findViewById(R.id.txt_c_detail_kls);
+
+        getJSON();
+
+        return view;
+    }
+
+    private void getJSON() {
+        //bantuan dari class AsyncTask
+        class GetJSON extends AsyncTask<Void, Void, String> {
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(getActivity(),
+                        "Mengambil Data", "Harap Tunggu...",
+                        false, false);
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                HttpHandler handler = new HttpHandler();
+                String result = handler.sendGetResponse(KonfigurasiHome.URL_GET_ALL);
+//                System.out.println("Result: " + result);
+
+                return result;
+            }
+
+            @Override
+            protected void onPostExecute(String message) {
+                super.onPostExecute(message);
+                loading.dismiss();
+                JSON_STRING = message;
+                Log.d("DATA JSON: ", JSON_STRING);
+                //Toast.makeText(getActivity(),
+                //        message.toString(), Toast.LENGTH_SHORT).show();
+                //menampilkan data dalam bentuk list view
+                displayDetailData(message);
+            }
+        }
+        GetJSON getJSON = new GetJSON();
+        getJSON.execute();
+    }
+
+    private void displayDetailData(String message) {
+        try {
+            JSONObject jsonObject = new JSONObject(message);
+            JSONArray result = jsonObject.getJSONArray(KonfigurasiHome.TAG_JSON_ARRAY);
+            JSONObject object = result.getJSONObject(0);
+
+            String c_mat = object.getString(KonfigurasiHome.TAG_JSON_C_MAT);
+            String c_ins = object.getString(KonfigurasiHome.TAG_JSON_C_INS);
+            String c_pst = object.getString(KonfigurasiHome.TAG_JSON_C_PST);
+            String c_kls = object.getString(KonfigurasiHome.TAG_JSON_C_KLS);
+            String c_d_kls = object.getString(KonfigurasiHome.TAG_JSON_C_DETAIL);
+
+            txt_c_ins.setText(c_ins + " Data");
+            txt_c_mat.setText(c_mat + " Data");
+            txt_c_pst.setText(c_pst + " Data");
+            txt_c_kls.setText(c_kls + " Data");;
+            txt_c_detail_kls.setText(c_d_kls + " Data");
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
