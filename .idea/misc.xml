@@ -6,8 +6,10 @@
         <entry key="..\:/Users/User/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/drawable/customborder.xml" value="0.2515" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/drawable/item_selected.xml" value="0.2515" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/drawable/shape.xml" value="0.2515" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/drawable/style.xml" value="0.2515" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_cari_instruktur.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_cari_kelas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_cari_materi.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_cari_peserta.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/activity_detail_kelas_add.xml" value="0.25416666666666665" />
@@ -28,6 +30,7 @@
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/fragment_kelas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/fragment_materi.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/fragment_peserta.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_cari_kelas.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_cari_materi.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_cari_peserta.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Data Adi Yusuf/Android/git/FinalProject/app/src/main/res/layout/list_item_detail_kelas.xml" value="0.25416666666666665" />

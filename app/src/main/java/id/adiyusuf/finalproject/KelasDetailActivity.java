@@ -380,11 +380,36 @@ public class KelasDetailActivity extends AppCompatActivity implements View.OnCli
             if (edit_tgl_mulai.getText().toString().equals("") || edit_tgl_akhir.getText().toString().equals("")) {
                 validation();
             } else {
-                updateDataKelas();
+                confirmUpdateDataKelas();
             }
         } else if(myButton == btn_delete_kls){
             confirmDeleteDataKelas();
         }
+    }
+
+    private void confirmUpdateDataKelas() {
+        final String tgl_mulai = edit_tgl_mulai.getText().toString().trim();
+        final String tgl_akhir = edit_tgl_akhir.getText().toString().trim();
+
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update Data");
+        builder.setMessage("Are you sure want to update this data? \n" +
+                "\n Tanggal Mulai : " + tgl_mulai +
+                "\n Tanggal Akhir : " + tgl_akhir +
+                "\n Instruktur : " + spinner_ins_kls_edit.getSelectedItem() +
+                "\n Materi     : " + spinner_mat_kls_edit.getSelectedItem());
+        builder.setIcon(getResources().getDrawable(android.R.drawable.ic_menu_edit));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel",null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataKelas();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void validation() {

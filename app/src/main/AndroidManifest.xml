@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FinalProject"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".CariKelasActivity"
+            android:exported="false" />
+        <activity
             android:name=".CariMateriActivity"
             android:exported="false" />
         <activity

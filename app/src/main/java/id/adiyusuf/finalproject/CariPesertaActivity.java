@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CariPesertaActivity extends AppCompatActivity {
-    private Button btn_cari_pst_mat;
     private Spinner spinner_cari_pst;
     private ListView list_cari_pst;
     private String spinner_value,JSON_STRING_PST,JSON_STRING_KLS;
@@ -35,7 +34,6 @@ public class CariPesertaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cari_peserta);
 
-        btn_cari_pst_mat = findViewById(R.id.btn_cari_pst_mat);
         spinner_cari_pst = findViewById(R.id.spinner_cari_pst);
         list_cari_pst = findViewById(R.id.list_cari_pst);
         toolbar_c_pst = findViewById(R.id.toolbar_c_pst);
@@ -46,12 +44,6 @@ public class CariPesertaActivity extends AppCompatActivity {
         
         getDataPeserta();
 
-        btn_cari_pst_mat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getDataKelas();
-            }
-        });
     }
 
     @Override
@@ -186,6 +178,10 @@ public class CariPesertaActivity extends AppCompatActivity {
                 JSONObject object = result.getJSONObject(i);
                 String id_pst = object.getString(KonfigurasiPeserta.TAG_JSON_ID);
                 String nama_pst = object.getString(KonfigurasiPeserta.TAG_JSON_NAMA);
+                if (i == 0){
+                    listId.add("0");
+                    listNama.add("Cari Peserta");
+                }
                 listId.add(id_pst);
                 listNama.add(nama_pst);
             }
@@ -199,7 +195,7 @@ public class CariPesertaActivity extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     spinner_value = listId.get(i);
-//                    Toast.makeText(CariPesertaActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
+                    getDataKelas();
                 }
 
                 @Override
@@ -207,6 +203,8 @@ public class CariPesertaActivity extends AppCompatActivity {
 
                 }
             });
+
+            spinner_cari_pst.setSelection(listNama.indexOf("Cari Peserta"));
 
         } catch (Exception ex) {
             ex.printStackTrace();

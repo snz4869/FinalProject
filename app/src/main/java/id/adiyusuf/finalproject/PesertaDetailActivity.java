@@ -128,12 +128,40 @@ public class PesertaDetailActivity extends AppCompatActivity implements View.OnC
             if (edit_nama_pst.getText().toString().equals("")) {
                 validation();
             } else {
-                updateDataPeserta();
+                confirmUpdateDataPeserta();
             }
         } else if(myButton == btn_delete_pst){
             confirmDeleteDataPeserta();
         }
     }
+
+    private void confirmUpdateDataPeserta() {
+        final String nama_pst = edit_nama_pst.getText().toString().trim();
+        final String email_pst = edit_email_pst.getText().toString().trim();
+        final String hp_pst = edit_hp_pst.getText().toString().trim();
+        final String instansi = edit_instansi.getText().toString().trim();
+
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update Data");
+        builder.setMessage("Are you sure want to update this data? \n" +
+                "\n Nama      : " + nama_pst +
+                "\n Email     : " + email_pst +
+                "\n No Hp     :  " + hp_pst +
+                "\n Instansi  : " + instansi);
+        builder.setIcon(getResources().getDrawable(android.R.drawable.ic_menu_edit));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel",null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataPeserta();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     private void validation() {
         //Confirmation altert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -147,6 +175,8 @@ public class PesertaDetailActivity extends AppCompatActivity implements View.OnC
     }
 
     private void confirmDeleteDataPeserta() {
+
+
         //Confirmation altert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete Data");

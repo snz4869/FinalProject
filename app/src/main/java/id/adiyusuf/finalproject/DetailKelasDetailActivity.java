@@ -298,10 +298,30 @@ public class DetailKelasDetailActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View myButton) {
         if (myButton == btn_update_dtl_kls) {
-            updateDataDetailKelas();
+            confirmUpdateDataDetailKelas();
         } else if (myButton == btn_delete_dtl_kls) {
             confirmDeleteDataDetailKelas();
         }
+    }
+
+    private void confirmUpdateDataDetailKelas() {
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update Data");
+        builder.setMessage("Are you sure want to insert this data? \n" +
+                "\n Kelas    : " + spinner_nama_kelas_edit.getSelectedItem() +
+                "\n Peserta : " + spinner_nama_pst_edit.getSelectedItem());
+        builder.setIcon(getResources().getDrawable(android.R.drawable.ic_menu_edit));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel", null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataDetailKelas();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void updateDataDetailKelas() {

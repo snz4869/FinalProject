@@ -119,11 +119,32 @@ public class MateriDetailActivity extends AppCompatActivity implements View.OnCl
             if (edit_nama_mat.getText().toString().equals("")) {
                 validation();
             } else {
-                updateDataMateri();
+                confirmUpdateDataMateri();
             }
         } else if(myButton == btn_delete_mat){
             confirmDeleteDataMateri();
         }
+    }
+
+    private void confirmUpdateDataMateri() {
+        final String nama_mat = edit_nama_mat.getText().toString().trim();
+
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update Data");
+        builder.setMessage("Are you sure want to update this data? \n" +
+                "\n Nama Materi: " + nama_mat);
+        builder.setIcon(getResources().getDrawable(android.R.drawable.ic_menu_edit));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel",null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataMateri();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void validation() {

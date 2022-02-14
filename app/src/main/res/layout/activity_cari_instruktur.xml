@@ -46,8 +46,8 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_cari_detail_ins"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:layout_weight="0"
                         android:background="@android:drawable/ic_menu_search" />
 

@@ -131,11 +131,36 @@ public class InstrukturDetailActivity extends AppCompatActivity implements View.
             if (edit_nama_ins.getText().toString().equals("")) {
                 validation();
             } else {
-                updateDataInstruktur();
+                confirmUpdateDataInstruktur();
             }
         } else if(myButton == btn_delete_ins){
             confirmDeleteDataInstruktur();
         }
+    }
+
+    private void confirmUpdateDataInstruktur() {
+        final String nama_ins = edit_nama_ins.getText().toString().trim();
+        final String email = edit_email.getText().toString().trim();
+        final String hp_ins = edit_hp_ins.getText().toString().trim();
+
+        //Confirmation altert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Update Data");
+        builder.setMessage("Are you sure want to update this data? \n" +
+                "\n Nama : " + nama_ins +
+                "\n Email: " + email +
+                "\n No Hp: " + hp_ins);
+        builder.setIcon(getResources().getDrawable(android.R.drawable.ic_menu_edit));
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel",null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                updateDataInstruktur();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void validation() {

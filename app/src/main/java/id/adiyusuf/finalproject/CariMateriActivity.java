@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CariMateriActivity extends AppCompatActivity {
-    private Button btn_cari_mat_pst;
     private Spinner spinner_cari_mat;
     private ListView list_cari_mat;
     private String spinner_value,JSON_STRING_PST,JSON_STRING_MAT;
@@ -35,7 +34,6 @@ public class CariMateriActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cari_materi);
 
-        btn_cari_mat_pst = findViewById(R.id.btn_cari_mat_pst);
         spinner_cari_mat = findViewById(R.id.spinner_cari_mat);
         list_cari_mat = findViewById(R.id.list_cari_mat);
         toolbar_c_mat = findViewById(R.id.toolbar_c_mat);
@@ -46,12 +44,12 @@ public class CariMateriActivity extends AppCompatActivity {
 
         getDataMateri();
 
-        btn_cari_mat_pst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getDataPeserta();
-            }
-        });
+//        btn_cari_mat_pst.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getDataPeserta();
+//            }
+//        });
     }
 
     @Override
@@ -113,6 +111,10 @@ public class CariMateriActivity extends AppCompatActivity {
                 JSONObject object = result.getJSONObject(i);
                 String id_mat = object.getString(KonfigurasiMateri.TAG_JSON_ID);
                 String nama_mat = object.getString(KonfigurasiMateri.TAG_JSON_NAMA);
+                if (i == 0) {
+                    listNama.add("Cari Materi");
+                    listId.add("0");
+                }
                 listId.add(id_mat);
                 listNama.add(nama_mat);
             }
@@ -126,6 +128,7 @@ public class CariMateriActivity extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     spinner_value = listId.get(i);
+                    getDataPeserta();
 //                    Toast.makeText(CariMateriActivity.this, "True Value: "+spinner_value, Toast.LENGTH_SHORT).show();
                 }
 
@@ -134,6 +137,8 @@ public class CariMateriActivity extends AppCompatActivity {
 
                 }
             });
+
+            spinner_cari_mat.setSelection(listNama.indexOf("Cari Materi"));//set selected value in spinner.setSelection(listNamaMat.indexOf(public_nama_mat));//set selected value in spinner
 
         } catch (Exception ex) {
             ex.printStackTrace();

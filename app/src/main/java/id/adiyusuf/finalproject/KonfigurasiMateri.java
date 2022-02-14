@@ -16,6 +16,7 @@ public class KonfigurasiMateri {
     public static final String TAG_JSON_ARRAY = "result";
     public static final String TAG_JSON_ID = "id_mat";
     public static final String TAG_JSON_NAMA = "nama_mat";
+    public static final String TAG_JSON_NO = "no_mat";
 
     //variable ID Pegawai
     public static final String MAT_ID = "mat_id";

@@ -156,11 +156,13 @@ public class MateriFragment extends Fragment {
 
             for (int i = 0; i < result.length(); i++) {
                 JSONObject object = result.getJSONObject(i);
-                String id_ins = object.getString(KonfigurasiMateri.TAG_JSON_ID);
-                String nama_ins = object.getString(KonfigurasiMateri.TAG_JSON_NAMA);
+                String id_mat = object.getString(KonfigurasiMateri.TAG_JSON_ID);
+                String nama_mat = object.getString(KonfigurasiMateri.TAG_JSON_NAMA);
+                String no_mat = object.getString(KonfigurasiMateri.TAG_JSON_NO);
                 HashMap<String, String> materi = new HashMap<>();
-                materi.put(KonfigurasiMateri.TAG_JSON_ID, id_ins);
-                materi.put(KonfigurasiMateri.TAG_JSON_NAMA, nama_ins);
+                materi.put(KonfigurasiMateri.TAG_JSON_ID, id_mat);
+                materi.put(KonfigurasiMateri.TAG_JSON_NAMA, nama_mat);
+                materi.put(KonfigurasiMateri.TAG_JSON_NO, no_mat);
 
                 //ubah format JSON menjadi Array List
                 list.add(materi);
@@ -173,7 +175,7 @@ public class MateriFragment extends Fragment {
         ListAdapter adapter = new SimpleAdapter(
                 getActivity(), list,
                 R.layout.list_item_materi,
-                new String[]{KonfigurasiMateri.TAG_JSON_ID, KonfigurasiMateri.TAG_JSON_NAMA},
+                new String[]{KonfigurasiMateri.TAG_JSON_NO, KonfigurasiMateri.TAG_JSON_NAMA},
                 new int[]{R.id.txt_id_mat, R.id.txt_name_mat}
         );
         list_view_mat.setAdapter(adapter);

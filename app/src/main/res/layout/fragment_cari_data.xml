@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@android:color/holo_green_dark"
-        android:text="Cari Instruktur"
+        android:text="Cari Instruktur By ID"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 
@@ -35,6 +35,16 @@
         android:layout_marginBottom="16dp"
         android:background="@android:color/holo_green_dark"
         android:text="Cari Materi"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cari_kls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/holo_green_dark"
+        android:text="Cari Kelas"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 </LinearLayout>

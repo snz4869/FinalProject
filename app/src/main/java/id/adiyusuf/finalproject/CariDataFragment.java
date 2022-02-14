@@ -16,7 +16,7 @@ import android.widget.Button;
  * create an instance of this fragment.
  */
 public class CariDataFragment extends Fragment {
-    Button btn_cari_ins,btn_cari_pst,btn_cari_mat;
+    Button btn_cari_ins,btn_cari_pst,btn_cari_mat,btn_cari_kls;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,6 +67,7 @@ public class CariDataFragment extends Fragment {
         btn_cari_ins = view.findViewById(R.id.btn_cari_ins);
         btn_cari_pst = view.findViewById(R.id.btn_cari_pst);
         btn_cari_mat = view.findViewById(R.id.btn_cari_mat);
+        btn_cari_kls = view.findViewById(R.id.btn_cari_kls);
 
         btnHandler();
 
@@ -92,6 +93,12 @@ public class CariDataFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(),CariMateriActivity.class));
+            }
+        });
+        btn_cari_kls.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),CariKelasActivity.class));
             }
         });
     }

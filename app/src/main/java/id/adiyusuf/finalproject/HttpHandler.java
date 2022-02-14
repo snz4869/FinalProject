@@ -1,5 +1,8 @@
 package id.adiyusuf.finalproject;
 
+import android.net.Uri;
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -108,6 +111,28 @@ public class HttpHandler {
                 sb.append(response + "\n");
             }
         } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return sb.toString();
+    }
+
+    public String sendGetRespDate(String responseUrl, String mulai, String akhir) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            Uri.Builder builder = new Uri.Builder();
+            builder.appendQueryParameter("mulai", mulai).
+                    appendQueryParameter("akhir", akhir);
+            URL url = new URL(responseUrl + builder);
+            Log.d("url:", String.valueOf(builder));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream())
+            );
+            String response;
+            while ((response = reader.readLine()) != null) {
+                sb.append(response + "\n");
+            }
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return sb.toString();
